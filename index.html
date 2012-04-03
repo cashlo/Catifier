@@ -12,6 +12,28 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+  google.load("gdata", "1.x");
+	google.setOnLoadCallback(initFunc);
+	
+	var contactsService;
+
+function setupContactsService() {
+  contactsService = new google.gdata.contacts.ContactsService('Catifier');
+}
+
+function logMeIn() {
+  var scope = 'https://www.google.com/m8/feeds';
+  var token = google.accounts.user.login(scope);
+}
+
+function initFunc() {
+  setupContactsService();
+  logMeIn();
+  getMyContacts();
+}
+</script>
   </head>
   <body>
     <div class="wrapper">
@@ -26,7 +48,7 @@
         </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>Welcome to Catifier.</h3>
 
 <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
